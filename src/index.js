@@ -4,7 +4,11 @@ class Validator {
   }
 
   validateUsername() {
-    return new RegExp('^([a-z])([-|_]?)([a-z]{1,10}|[0-9]{0,3})([-|_]?)([a-z]{1,10})([-|_]?)([a-z]{1,10}|[0-9]{0,3})([-|_]?)([a-z])$', 'igm').test(this.inputName);
+    if (new RegExp('^([a-z])([a-z0-9-_]+)([a-z]$)', 'igm').test(this.inputName) && !(new RegExp('[0-9]{4,}', 'gm').test(this.inputName))) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
